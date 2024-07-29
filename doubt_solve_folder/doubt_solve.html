@@ -20,21 +20,6 @@
     function goBack() {
         window.history.back();
     }
-
-    // Handle the scroll event to hide/show the button
-    let lastScrollTop = 0;
-    window.addEventListener("scroll", function() {
-        const button = document.querySelector(".back-button");
-        let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-        if (scrollTop > lastScrollTop) {
-            // Downscroll
-            button.classList.add("hidden");
-        } else {
-            // Upscroll
-            button.classList.remove("hidden");
-        }
-        lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; // For mobile or negative scrolling
-    }, false);
 </script>
     <header>
         <h1>Doubt Solving</h1>

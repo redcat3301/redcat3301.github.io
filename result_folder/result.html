@@ -16,6 +16,11 @@
 <body>
     <!-- Back button -->
     <button class="back-button" onclick="goBack()">←</button>
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
 
     <!-- Main content -->
     <div class="container">
@@ -64,27 +69,8 @@
         </div>
     </footer>
 
-    <!-- JavaScript to handle scrolling behavior -->
+    <!-- JavaScript to check results -->
     <script>
-        function goBack() {
-            window.history.back();
-        }
-
-        // Handle the scroll event to hide/show the button
-        let lastScrollTop = 0;
-        window.addEventListener("scroll", function() {
-            const button = document.querySelector(".back-button");
-            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-            if (scrollTop > lastScrollTop) {
-                // Downscroll
-                button.classList.add("hidden");
-            } else {
-                // Upscroll
-                button.classList.remove("hidden");
-            }
-            lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; // For mobile or negative scrolling
-        }, false);
-
         const apiKey = 'AIzaSyBooe-Fdm9nJRv1buEzPA8ayyRPPXtPQbs';
         const spreadsheetId = '1Sn0_s0_3KvlrrK90krhV9tUeax8yde-RVLNF10tHLqY';
 
