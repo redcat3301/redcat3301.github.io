@@ -73,12 +73,9 @@
 }
 /* Responsive design */
 @media (max-width: 768px) {
-    .container {
-        justify-content: center; /* Center container items on mobile */
-    }
+    .container {justify-content: center; /* Center container items on mobile */}
 }
 @media (max-width: 480px) {
-    .container {
-        justify-content: center; /* Center container items on mobile */
-    }
+    .container {justify-content: center; /* Center container items on mobile */}
+    .back-button {display: none;}
 }
