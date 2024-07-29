@@ -90,11 +90,7 @@ main {
 
 /* Responsive design */
 @media (max-width: 768px) {
-    .back-button {
-        font-size: 14px;
-        padding: 7px 7px;border-radius: 50px;
-        background-color: #defff9;color: #333;
-    }
+    .back-button {display: none;}
 }
 
 @media (max-width: 480px) {

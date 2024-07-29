@@ -106,11 +106,7 @@ footer {
 }
 
 @media (max-width: 480px) {
-    .back-button {
-        font-size: 14px;
-        padding: 5px 5px;border-radius: 50px;
-        background-color: #defff9;color: #333;
-    }
+    .back-button { display: none;}
     .box {
         width: 200px;height: 100px;
         border: 2px solid #000;border-radius: 10px;

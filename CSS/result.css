@@ -161,11 +161,7 @@ footer {
 }
 
 @media (max-width: 480px) {
-    .back-button {
-        font-size: 14px;
-        padding: 5px 5px;
-        border-radius: 50px;
-    }
+    .back-button {display: none;}
     header h1 {
         font-size: 20px; /* Smaller font size for very small screens */
     }
