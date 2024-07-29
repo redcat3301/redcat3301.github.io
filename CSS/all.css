@@ -1,0 +1,67 @@
+/* CSS for header and box styling */
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #defff9;
+    }
+    .header {
+        background-color: #333;
+        color: #fff;
+        text-align: center;
+        padding: 10px 0;
+        margin-bottom: 20px;
+        font-family: "Poppins",system-ui;
+        letter-spacing: 1px;
+    }
+    .container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        align-items: center;
+    }
+    .box {
+        width: 200px;
+        align-content: center;
+        background-color: #cdfff7;
+        border: 2px solid #333; border-radius: 10px;
+        margin: 20px;
+        font-size: 21px; font-family: "Baloo Da 2",system-ui; text-align: left;
+        padding: 30px;
+        cursor: pointer; transition: background-color 0.3s
+    }
+    .box-title {
+        margin-bottom: 5px;
+        text-align: center;
+    }
+    .box-content {
+        display: none;
+        padding: 10px;
+        color: #000; /* Text color */
+        font-size: 18px; /* Font size */
+    }
+    .box-content ol {
+        padding-left: 20px; /* Indentation for list items */
+    }
+    .box-content a {
+        color: #1a73e8; /* Link color */
+        text-decoration: none; /* Remove underline from links */
+    }
+    .box-content a:hover {
+        text-decoration: underline; /* Underline links on hover */
+    }
+    .box:hover {
+        background-color: #defff9; /* Light gray background on hover */
+        transition: background-color 0.3s;
+    }
+/* Responsive design */
+@media (max-width: 768px) {
+    .container {
+        justify-content: center; /* Center container items on mobile */
+    }
+}
+@media (max-width: 480px) {
+    .container {
+        justify-content: center; /* Center container items on mobile */
+    }
+}

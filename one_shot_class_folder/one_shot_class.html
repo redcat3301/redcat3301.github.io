@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>One Shot Class</title>
+<!--Fonts-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+Da+2:wght@400..800&family=Poppins:wght@300;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/CSS/academic_oneshot_exam.css">
+<link rel="icon" type="x-icon" href="/Assets/favicon.png">
+</head>
+<body>
+<!-- Back button -->
+<button class="back-button" onclick="goBack()">←</button>
+
+<!-- JavaScript to handle scrolling behavior -->
+<script>
+    function goBack() {
+        window.history.back();
+    }
+
+    // Handle the scroll event to hide/show the button
+    let lastScrollTop = 0;
+    window.addEventListener("scroll", function() {
+        const button = document.querySelector(".back-button");
+        let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        if (scrollTop > lastScrollTop) {
+            // Downscroll
+            button.classList.add("hidden");
+        } else {
+            // Upscroll
+            button.classList.remove("hidden");
+        }
+        lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; // For mobile or negative scrolling
+    }, false);
+</script>
+    <header>
+        <h1>One Shot Class</h1>
+    </header>
+    <main>
+        <div class="box box-general-math"><a href="one_shot_class/general_math.html">General Math</a></div>
+        <div class="box box-higher-math"><a href="one_shot_class/higher_math.html">Higher Math</a></div>
+        <div class="box box-physics"><a href="one_shot_class/physics.html">Physics</a></div>
+        <div class="box box-chemistry"><a href="one_shot_class/chemistry.html">Chemistry</a></div>
+    </main>
+<!--Footer-->  
+<footer>
+    <div class="footer-content">
+        <small>যোগাযোগ</small>
+        <p><a href="mailto:minhaj101011@gmail.com">minhaj101011@gmail.com</a></p>
+        <p>Copyright © 2024 Minhaj, All Rights Reserved.</p>
+    </div>
+  </footer>
+  
+  <script>
+    // Ensure footer stays at the bottom
+    document.addEventListener("DOMContentLoaded", function() {
+        var footer = document.querySelector("footer");
+        if (window.innerHeight > document.body.offsetHeight) {
+            footer.style.position = "absolute";
+            footer.style.bottom = "0";
+            footer.style.width = "100%";
+        }
+    });
+  </script>    
+</body>
+</html>

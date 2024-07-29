@@ -1,0 +1,120 @@
+/* Resetting default margin and padding */
+* {
+    margin: 0;
+    padding: 0;
+}
+
+/* Body styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #defff9; /* Light gray background */
+    overflow-x: hidden;
+}
+
+/* Header styles */
+header {
+    background-color: #333; /* Dark background for header */
+    color: #fff; /* White text color */
+    text-align: center; /* Center-align text */
+    padding: 30px 0; /* Padding for top and bottom */
+    font-family: "Poppins",system-ui; letter-spacing: 1px; font-size: 15px;
+}
+header h1 {margin-top: 0; /* Remove default margin */}
+
+/* Main styles */
+main {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+/* Box styles */
+.box {
+    width: 230px;height: 115px;
+    border: 2px solid #000;border-radius: 10px;
+    text-align: center;line-height: 100px; /* Center text vertically */
+    margin: 20px;
+    font-size: 20px; font-family: "Poppins",system-ui; font-weight: 300;
+    transition: background-color 0.3s; /* Smooth transition for responsiveness */
+}
+
+/* Specific box background colors */
+.box-general-math {background-color: #6effe2;}
+.box-higher-math {background-color: #ffaf40;}
+.box-physics {background-color: #4ab1ff;}
+.box-chemistry {background-color: #D6A2E8;}
+
+.box a {
+    text-decoration: none; /* Remove underline from links */
+    color: #000; /* Black text color */
+    display: block;
+    height: 100%;
+}
+
+.box:hover {
+    background-color: #defff9; /* Light gree background on hover */
+    transition: background-color 0.3s; /* Smooth transition for responsiveness */
+}
+
+/*Back button*/
+.back-button {
+    position: fixed;
+    top: 30px; left: 5px;
+    padding: 7px 7px;
+    background-color: #333; color: white;
+    border: none; border-radius: 50px;
+    cursor: pointer;
+    font-size: 16px; font-family: sans-serif; font-style: bold;
+    z-index: 1000; /* Ensures the button stays on top */
+    transition: background-color 0.3s; /* Smooth transition for responsiveness */
+}
+
+.back-button.hidden {top: -30px; /* Move the button out of view when hidden */}
+
+.back-button:hover {
+    background-color: #defff9; color: #333;
+    transition: background-color 0.3s;
+}
+/*Footer*/
+.footer{margin-top: auto;}
+footer {
+    background-color: #cdfff7; color: white;
+    text-align: center;
+    padding: 20px 10px;
+    margin-top: auto;} /*using footer div place on 100px down from top*/
+.footer-content a{text-decoration: none; color: #000;}
+.footer-content{font-size: 13px; font-family: "Poppins"; color: #000;}
+.footer-content small {font-size: 16px; font-family: "Baloo Da 2"; color: #4900d1;
+    border-bottom: 1px solid black;}
+.footer-content p, .footer-content small {margin: 0.5em 0;}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .back-button {
+        font-size: 14px;
+        padding: 7px 7px;border-radius: 50px;
+        background-color: #defff9;color: #333;
+    }
+    .box {
+        width: 200px;height: 100px;
+        border: 2px solid #000;border-radius: 10px;
+        text-align: center; margin: 20px;
+        font-size: 18px; font-family: "Poppins",system-ui; font-weight: 300;
+    }
+    .footer-content{font-size: 10px;} .footer-content small{font-size: 14px;}
+}
+
+@media (max-width: 480px) {
+    .back-button {
+        font-size: 14px;
+        padding: 5px 5px;border-radius: 50px;
+        background-color: #defff9;color: #333;
+    }
+    .box {
+        width: 200px;height: 100px;
+        border: 2px solid #000;border-radius: 10px;
+        text-align: center; margin: 20px;
+        font-size: 18px; font-family: "Poppins",system-ui; font-weight: 300;
+    }
+}

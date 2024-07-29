@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Dashboard</title>
+  <!--Fonts-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+Da+2:wght@400..800&family=Poppins:wght@300;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/CSS/style.css">
+  <link rel="stylesheet" href="/css/scroll_bar.css">
+  <link rel="icon" type="x-icon" href="/Assets/favicon.png">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script>
+    $(document).ready(function() {
+      // Notice fetching from Google Sheets  
+      var noticeSheetID = '1hHs5pt0iXwzfR1PYkvMUdBLURwlQnt_RMmVjI1yUYkM'; // Replace with your Google Sheet ID for notices
+      var noticeApiKey = 'AIzaSyBWkvsUZPm-t1KM8xWgrVyhwK09pS6jPpc'; // Replace with your Google Sheets API key for notices
+      var noticeUrl = `https://sheets.googleapis.com/v4/spreadsheets/${noticeSheetID}/values/A:A?key=${noticeApiKey}`;
+
+      $.getJSON(noticeUrl, function(data) {
+        var notices = '';
+        var rows = data.values;
+        for (var i = 0; i < rows.length; i++) {
+          notices += '<p>' + rows[i][0] + '</p>';
+        }
+        $('#notice-content').html(notices);
+      });
+
+      // Routine fetching from Google Sheets  
+      var routineSheetID = '1PO6MMMwQD436CLfCwazuyyrdV3pkmJh5yqO5lU8s7hk'; // Replace with your Google Sheet ID for routine
+      var routineApiKey = 'AIzaSyBWkvsUZPm-t1KM8xWgrVyhwK09pS6jPpc'; // Replace with your Google Sheets API key for routine
+      var routineUrl = `https://sheets.googleapis.com/v4/spreadsheets/${routineSheetID}/values/Sheet1?key=${routineApiKey}`;
+
+      $.getJSON(routineUrl, function(data) {
+        var table = '<table>';
+        var rows = data.values;
+        for (var i = 0; i < rows.length; i++) {
+          table += '<tr>';
+          for (var j = 0; j < rows[i].length; j++) {
+            table += '<td>' + rows[i][j] + '</td>';
+          }
+          table += '</tr>';
+        }
+        table += '</table>';
+        $('#routine-table').html(table);
+        highlightToday();
+      });
+
+      function highlightToday() {
+        var today = new Date().toLocaleString('en-us', { weekday: 'long' });
+        $('td').filter(function() {
+          return $(this).text() === today;
+        }).css('background-color', '#ffff66');
+      }
+    });
+  </script>
+</head>
+<body>
+  <header>
+    <div class="header-left">
+      <h2>☘️ Batch - 1.0</h2>
+      <p>Welcome to student dashboard</p>
+    </div>
+    <div class="header-right">
+      <nav>
+        <div class="menu-icon" id="menu-icon" onclick="toggleMenu()">&#9776;</div>
+        <ul id="menu">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="/academic_class_folder/academic_class.html">Academic Class</a></li>
+          <li><a href="/one_shot_class_folder/one_shot_class.html">One Shot Class</a></li>
+          <li><a href="/exam_folder/exam.html">Exam</a></li>
+          <li><a href="result_folder/result.html">Result</a></li>
+          <li><a href="/doubt_solve_folder/doubt_solve.html">Doubt Solve</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <div class="container">
+    <div class="content">
+      <div class="notice-box">
+        <h3>📋Notice</h3>
+        <div id="notice-content"></div>
+      </div>
+      <div class="routine-box">
+        <h3>⏰Routine</h3>
+        <div id="routine-table"></div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function toggleMenu() {
+      var menu = document.getElementById('menu');
+      if (menu.style.transform === 'translateX(0%)') {
+        menu.style.transform = 'translateX(100%)';
+      } else {
+        menu.style.transform = 'translateX(0%)';
+      }
+    }
+
+    function handleClickOutsideMenu(event) {
+      var menu = document.getElementById('menu');
+      var menuIcon = document.getElementById('menu-icon');
+      if (!menu.contains(event.target) && !menuIcon.contains(event.target)) {
+        menu.style.transform = 'translateX(100%)';
+      }
+    }
+
+    function updateMenuEventListeners() {
+      if (window.innerWidth <= 768) {
+        document.addEventListener('click', handleClickOutsideMenu);
+      } else {
+        document.removeEventListener('click', handleClickOutsideMenu);
+        var menu = document.getElementById('menu');
+        menu.style.transform = 'translateX(0%)';
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', updateMenuEventListeners);
+    window.addEventListener('resize', updateMenuEventListeners);
+  </script>
+<!--Footer-->
+<footer>
+  <div class="footer-content">
+      <small>যোগাযোগ</small>
+      <p><a href="mailto:minhaj101011@gmail.com">minhaj101011@gmail.com</a></p>
+      <p>Copyright © 2024 Minhaj, All Rights Reserved.</p>
+  </div>
+</footer>
+
+<script>
+  // Ensure footer stays at the bottom
+  document.addEventListener("DOMContentLoaded", function() {
+      var footer = document.querySelector("footer");
+      if (window.innerHeight > document.body.offsetHeight) {
+          footer.style.position = "absolute";
+          footer.style.bottom = "0";
+          footer.style.width = "100%";
+      }
+  });
+</script>
+</body>
+</html>

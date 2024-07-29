@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Result Checker</title>
+    <!--Fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+Da+2:wght@400..800&family=Poppins:wght@300;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/CSS/result.css">
+    <link rel="stylesheet" href="/CSS/scroll_bar.css">
+    <link rel="icon" type="x-icon" href="/Assets/favicon.png">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <!-- Back button -->
+    <button class="back-button" onclick="goBack()">←</button>
+
+    <!-- Main content -->
+    <div class="container">
+        <header>
+            <h1>Check Your Result📝</h1>
+        </header>
+        <div class="result-checker">
+            <form id="resultForm">
+                <label for="subject">Select Subject:</label>
+                <select id="subject" name="subject">
+                    <option value="General Math">General Math</option>
+                    <option value="Higher Math">Higher Math</option>
+                    <option value="Physics">Physics</option>
+                    <option value="Chemistry">Chemistry</option>
+                </select><br><br>
+
+                <label for="exam">Select Exam No:</label>
+                <select id="exam" name="exam">
+                    <option value="Exam-01">Exam-01</option>
+                    <option value="Exam-02">Exam-02</option>
+                    <option value="Exam-03">Exam-03</option>
+                    <option value="Exam-04">Exam-04</option>
+                </select><br><br>
+
+                <label for="studentId">Enter Student ID:</label>
+                <input type="text" id="studentId" name="studentId" placeholder="Your Mobile Number"><br><br>
+
+                <button type="button" onclick="checkResult()">Check Result</button>
+            </form>
+            <div id="result" style="margin-top:20px;">
+                <p id="name"></p>
+                <p id="score"></p>
+                <p id="position"></p>
+                <!-- Loading spinner -->
+                <div id="loading" class="spinner"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <small>যোগাযোগ</small>
+            <p><a href="mailto:minhaj101011@gmail.com">minhaj101011@gmail.com</a></p>
+            <p>Copyright © 2024 Minhaj, All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript to handle scrolling behavior -->
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+
+        // Handle the scroll event to hide/show the button
+        let lastScrollTop = 0;
+        window.addEventListener("scroll", function() {
+            const button = document.querySelector(".back-button");
+            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            if (scrollTop > lastScrollTop) {
+                // Downscroll
+                button.classList.add("hidden");
+            } else {
+                // Upscroll
+                button.classList.remove("hidden");
+            }
+            lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; // For mobile or negative scrolling
+        }, false);
+
+        const apiKey = 'AIzaSyBooe-Fdm9nJRv1buEzPA8ayyRPPXtPQbs';
+        const spreadsheetId = '1Sn0_s0_3KvlrrK90krhV9tUeax8yde-RVLNF10tHLqY';
+
+        function checkResult() {
+            const subject = document.getElementById('subject').value;
+            const examNo = document.getElementById('exam').value;
+            const studentId = document.getElementById('studentId').value;
+
+            // Map the subject to the short form
+            const subjectMap = {
+                "General Math": "gm",
+                "Higher Math": "hm",
+                "Physics": "phy",
+                "Chemistry": "chem"
+            };
+            
+            // Get the short form for the subject
+            const subjectShortForm = subjectMap[subject];
+            
+            // Create the sheet name
+            const sheetName = `${subjectShortForm}-${examNo.split('-')[1]}`;
+            const url = `https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetId}/values/${sheetName}!A:D?key=${apiKey}`;
+
+            // Show the loading spinner
+            document.getElementById('loading').style.display = 'block';
+            document.getElementById('name').innerText = '';
+            document.getElementById('score').innerText = '';
+            document.getElementById('position').innerText = '';
+
+            $.getJSON(url, function(data) {
+                // Hide the loading spinner
+                document.getElementById('loading').style.display = 'none';
+
+                const rows = data.values;
+                const headers = rows[0];
+                const studentIndex = headers.indexOf('Your Phone Number = Student ID');
+                const nameIndex = headers.indexOf('Name');
+                const scoreIndex = headers.indexOf('Score');
+                const positionIndex = headers.indexOf('Position');
+
+                let resultFound = false;
+                for (let i = 1; i < rows.length; i++) {
+                    if (rows[i][studentIndex] === studentId) {
+                        document.getElementById('name').innerText = `Name: ${rows[i][nameIndex]}`;
+                        document.getElementById('score').innerText = `Score: ${rows[i][scoreIndex]}`;
+                        document.getElementById('position').innerText = `Position: ${rows[i][positionIndex]}`;
+                        resultFound = true;
+                        break;
+                    }
+                }
+                if (!resultFound) {
+                    document.getElementById('name').innerText = 'No result found for the given Student ID.Wait for 10 minutes & recheck again.';
+                    document.getElementById('score').innerText = '';
+                    document.getElementById('position').innerText = '';
+                }
+            }).fail(function() {
+                // Hide the loading spinner in case of an error
+                document.getElementById('loading').style.display = 'none';
+                document.getElementById('name').innerText = 'Failed to retrieve results. Please try again.';
+            });
+        }
+    </script>
+</body>
+</html>
