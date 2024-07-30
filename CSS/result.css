@@ -9,7 +9,16 @@ body {
     flex-direction: column;
     background-color: #defff9;
 }
-
+/*Scroll Bar*/
+  /* width */
+  ::-webkit-scrollbar { width: 6px;}
+  /* Track */
+  ::-webkit-scrollbar-track {background: #fffefe;} 
+  /* Handle */
+  ::-webkit-scrollbar-thumb {background: #888; border-radius: 5px;}
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {background: #6d6d6d;}
+  
 /* Container for main content */
 .container {
     flex: 1; /* Allows the container to expand and fill available space */
