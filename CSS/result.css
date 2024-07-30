@@ -25,8 +25,8 @@ body {
 
 /* Header styles */
 header {
-    background-color: #4834d4;
-    color: white;
+    background-color: #04d6b0e0;
+    color: black;
     padding: 10px;
     border-radius: 8px 8px 0 0;
     margin-bottom: 30px; /* Add margin below the header */
@@ -74,8 +74,8 @@ header h1 {
 }
 
 .result-checker button {
-    background-color: #4834d4;
-    color: white;
+    background-color: #04d6b0e0;
+    color: black;
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -83,7 +83,7 @@ header h1 {
 }
 
 .result-checker button:hover {
-    background-color: #1800b1;
+    background-color: #01c5a1e0;
 }
 
 /* Result styles */
@@ -100,7 +100,7 @@ header h1 {
     display: none;
     border: 4px solid rgba(0, 0, 0, 0.1);
     border-radius: 50%;
-    border-top: 4px solid #1800b1;
+    border-top: 4px solid #04d6b0e0;
     width: 40px;
     height: 40px;
     animation: spin 1s linear infinite;
@@ -117,7 +117,7 @@ header h1 {
     position: fixed;
     top: 30px; left: 5px;
     padding: 7px 7px;
-    background-color: #4834d4; color: white;
+    background-color: #defff9; color: black;
     border: none; border-radius: 50px;
     cursor: pointer;
     font-size: 16px; font-family: sans-serif; font-style: bold;
@@ -128,7 +128,7 @@ header h1 {
 .back-button.hidden {top: -30px; /* Move the button out of view when hidden */}
 
 .back-button:hover {
-    background-color: #1800b1;
+    background-color: #04d6b0e0;
     transition: background-color 0.3s;
 }
 
@@ -162,13 +162,12 @@ footer {
 
 @media (max-width: 480px) {
     .back-button {display: none;}
-    header h1 {
-        font-size: 22px; /* Smaller font size for very small screens */
-    }
+    header h1 {font-size: 22px; /* Smaller font size for very small screens */}
     .container {
-        width: 90%;
+        width: 85%;
         padding: 10px; /* Further reduced padding for very small screens */
         margin-top: 80px;
+        font-size: 14px;
     }
     footer {padding: 15px 10px;
     .footer-content{font-size: 10px;} .footer-content small{font-size: 14px;}

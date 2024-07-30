@@ -28,7 +28,7 @@
         margin: 20px;
         font-size: 21px; font-family: "Baloo Da 2",system-ui; text-align: left;
         padding: 30px;
-        cursor: pointer; transition: background-color 0.3s;
+        cursor: pointer; transition: background-color 0.3s ,;
     }
     .box-title {
         margin-bottom: 5px;
