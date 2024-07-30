@@ -126,11 +126,7 @@ header h1 {
 }
 
 .back-button.hidden {top: -30px; /* Move the button out of view when hidden */}
-
-.back-button:hover {
-    background-color: #04d6b0e0;
-    transition: background-color 0.3s;
-}
+.back-button:hover {background-color: #04d6b0e0; transition: background-color 0.3s;}
 
 /* Footer styles */
 footer {

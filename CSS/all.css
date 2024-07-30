@@ -54,23 +54,7 @@
         background-color: #defff9; /* Light gray background on hover */
         transition: background-color 0.3s;
     }
-/*Back button*/
-.back-button {
-    position: fixed;
-    top: 30px; left: 5px;
-    padding: 7px 7px;
-    background-color: #333; color: white;
-    border: none; border-radius: 50%;
-    cursor: pointer;
-    font-size: 16px; font-family: sans-serif; font-style: bold;
-    z-index: 1000; /* Ensures the button stays on top */
-    transition: background-color 0.3s; /* Smooth transition for responsiveness */
-}
-.back-button.hidden {top: -30px; /* Move the button out of view when hidden */}
-.back-button:hover {
-    background-color: #defff9; color: #333;
-    transition: background-color 0.3s;
-}
+    
 /* Responsive design */
 @media (max-width: 768px) {
     .container {justify-content: center; /* Center container items on mobile */}
