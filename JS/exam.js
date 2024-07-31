@@ -18,7 +18,7 @@ function toggleBoxContent(boxNumber) {
 // Fetch data from the Google Sheet
 async function fetchSheetData() {
     // const sheet name get from html
-    const url = `https://sheets.googleapis.com/v4/spreadsheets/${academicSheetID}/values/${sheetName}?key=${API_KEY}`; // Replace with your API key
+    const url = `https://sheets.googleapis.com/v4/spreadsheets/${examSheetID}/values/${sheetName}?key=${API_KEY}`; // Replace with your API key
 
     try {
         const response = await fetch(url);
