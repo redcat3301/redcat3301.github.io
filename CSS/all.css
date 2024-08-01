@@ -24,9 +24,9 @@
         width: 200px;
         align-content: center;
         background-color: #cdfff7;
-        border: 2px solid #333; border-radius: 10px;
+        border: 1px solid #333; border-radius: 10px;
         margin: 20px;
-        font-size: 21px; font-family: "Baloo Da 2",system-ui; text-align: left;
+        font-size: 21px; font-family: "Baloo Da 2",system-ui;
         padding: 30px;
         cursor: pointer; transition: background-color 0.3s ,;
     }

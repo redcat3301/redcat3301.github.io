@@ -32,8 +32,8 @@ main {
 /* Box styles */
 .box {
     width: 230px;height: 115px;
-    border: 2px solid #000;border-radius: 10px;
-    text-align: center;line-height: 100px; /* Center text vertically */
+    border: 1px solid #000;border-radius: 10px;
+    text-align: center; line-height: 100px; /* Center text vertically */
     margin: 20px;
     font-size: 20px; font-family: "Poppins",system-ui; font-weight: 300;
     transition: background-color 0.3s; /* Smooth transition for responsiveness */
