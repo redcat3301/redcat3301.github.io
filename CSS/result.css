@@ -103,7 +103,7 @@ header h1 {
 #result p {
     margin: 5px 0;
 }
-
+#caution {font-family: "Poppins"; font-weight: 300;}
 /* Spinner Styles */
 .spinner {
     display: none;
