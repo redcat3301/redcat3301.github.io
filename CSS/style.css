@@ -24,6 +24,10 @@ header {
     color: #fff;
     padding: 20px 10px;
 }
+.again{
+    text-decoration: none;
+    color: white;
+}
 body {
     display: flex;
     flex-direction: column;
